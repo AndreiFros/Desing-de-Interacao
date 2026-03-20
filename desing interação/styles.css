@@ -1,0 +1,280 @@
+:root {
+  /* Variáveis globais de cor, contraste e sombra para padronizar o visual do site. */
+  --bg-page: #f3efe7;
+  --bg-panel: #fffdfa;
+  --header-bg: linear-gradient(135deg, #1f2a44 0%, #2f4f6f 70%, #4d7a8c 100%);
+  --nav-bg: #152033;
+  --footer-bg: #1f2a44;
+  --text-main: #1b1f2a;
+  --text-light: #f8fbff;
+  --accent: #e56b6f;
+  --accent-2: #2a9d8f;
+  --shadow-soft: 0 10px 30px rgba(31, 42, 68, 0.12);
+}
+
+/* Evita que largura/altura dos elementos ultrapassem seus limites por padding/borda. */
+* {
+  box-sizing: border-box;
+}
+
+/* Estilo base da página com tipografia principal e fundo decorativo. */
+body {
+  margin: 0;
+  font-family: "Barlow", sans-serif;
+  color: var(--text-main);
+  background:
+    radial-gradient(circle at 15% 15%, rgba(42, 157, 143, 0.15), transparent 35%),
+    radial-gradient(circle at 80% 0%, rgba(229, 107, 111, 0.22), transparent 42%),
+    var(--bg-page);
+}
+
+/* Estrutura em coluna para manter o rodapé no fim da página. */
+.site-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Cabeçalho com destaque visual e alto contraste. */
+.site-header {
+  background: var(--header-bg);
+  color: var(--text-light);
+  border-bottom: 3px solid rgba(255, 255, 255, 0.25);
+}
+
+/* Título principal com fonte serifada para dar personalidade ao topo. */
+.site-title {
+  margin: 0;
+  font-family: "Merriweather", serif;
+  font-size: clamp(1.5rem, 1.6vw + 1rem, 2.4rem);
+}
+
+/* Subtítulo de apoio abaixo do título principal. */
+.site-subtitle {
+  margin: 0.5rem 0 0;
+  font-size: 1rem;
+  opacity: 0.95;
+}
+
+/* Barra de navegação fixa no topo em telas maiores. */
+.site-nav {
+  background-color: var(--nav-bg);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+/* Lista de links do menu, com quebra de linha quando faltar espaço. */
+.nav-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0.5rem 0;
+  gap: 0.5rem;
+}
+
+/* Aparência dos links de navegação. */
+.nav-list a {
+  display: inline-block;
+  padding: 0.55rem 0.95rem;
+  text-decoration: none;
+  color: var(--text-light);
+  border-radius: 999px;
+  font-weight: 600;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+/* Estado de foco e hover para melhorar usabilidade. */
+.nav-list a:hover,
+.nav-list a:focus-visible {
+  background-color: rgba(255, 255, 255, 0.16);
+  transform: translateY(-1px);
+}
+
+/* Destaca a página atualmente ativa no menu. */
+.nav-list a.active {
+  background-color: var(--accent);
+}
+
+/* Faz o conteúdo principal crescer e empurrar o rodapé para baixo. */
+.site-main {
+  flex: 1;
+}
+
+/* Cartão visual padrão usado em blocos de conteúdo e formulário. */
+.info-card {
+  background-color: var(--bg-panel);
+  border-radius: 14px;
+  padding: 1.2rem;
+  box-shadow: var(--shadow-soft);
+  border: 1px solid rgba(31, 42, 68, 0.08);
+}
+
+/* Títulos internos dos blocos. */
+.info-card h2 {
+  font-family: "Merriweather", serif;
+  font-size: 1.35rem;
+  margin-bottom: 0.8rem;
+}
+
+/* Espaçamento do componente figure na página de apresentação. */
+.custom-figure {
+  margin: 1rem 0 0;
+}
+
+/* Legenda da imagem com menor destaque visual. */
+.custom-figure figcaption {
+  margin-top: 0.5rem;
+  color: #45516b;
+  font-size: 0.95rem;
+}
+
+/* Rodapé padronizado do site. */
+.site-footer {
+  background-color: var(--footer-bg);
+  color: var(--text-light);
+  text-align: center;
+}
+
+/* Organização dos blocos internos do formulário do editor. */
+.editor-form {
+  display: grid;
+  gap: 1rem;
+}
+
+/* Cada fieldset é uma seção funcional do formulário. */
+.editor-form fieldset {
+  border: 1px solid rgba(31, 42, 68, 0.2);
+  border-radius: 12px;
+  padding: 1rem;
+}
+
+/* Estilo da legenda de cada fieldset. */
+.legend-title {
+  float: none;
+  width: auto;
+  padding: 0;
+  margin: 0 0 0.8rem;
+  font-family: "Merriweather", serif;
+  font-size: 1rem;
+}
+
+/* Textos auxiliares (dicas e status). */
+.hint-text,
+.status-text {
+  font-size: 0.85rem;
+  color: #45516b;
+}
+
+/* Botão principal de ação do editor. */
+.btn-custom {
+  background-color: var(--accent-2);
+  color: #fff;
+  border: none;
+  font-weight: 700;
+}
+
+/* Variação visual no hover/foco do botão. */
+.btn-custom:hover,
+.btn-custom:focus-visible {
+  background-color: #238477;
+  color: #fff;
+}
+
+/* Espaço abaixo do título da pré-visualização. */
+.preview-title {
+  margin-bottom: 1rem;
+}
+
+/* Permite rolagem horizontal se o cartão ficar maior que a área disponível. */
+.preview-stage {
+  overflow: auto;
+  padding-bottom: 0.25rem;
+}
+
+/* Componente visual do cartão editável. */
+.card-preview {
+  width: 360px;
+  min-height: 260px;
+  margin: 0 auto;
+  border-radius: 16px;
+  border: 3px solid var(--accent);
+  padding: 1rem;
+  background-color: #fff7d6;
+  color: #1f2a44;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  transition: all 0.2s ease;
+  overflow-wrap: anywhere;
+}
+
+/* Texto curto que indica tipo do cartão (aniversário, natal etc.). */
+.card-preview .occasion {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* Título principal do cartão. */
+.card-preview h3 {
+  margin: 0;
+  font-size: 1.45rem;
+  font-family: "Merriweather", serif;
+}
+
+/* Texto da mensagem principal do cartão. */
+.card-preview .message {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.35;
+}
+
+/* Assinatura fixa na parte inferior do cartão. */
+.card-preview .signature {
+  margin: auto 0 0;
+  font-weight: 700;
+}
+
+/* Área da imagem inserida pelo usuário. */
+.card-image {
+  width: 100%;
+  max-height: 110px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* Contêiner dos elementos decorativos adicionados. */
+.decor-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+/* Estilo de cada etiqueta decorativa criada no formulário. */
+.decor-item {
+  border-radius: 999px;
+  padding: 0.2rem 0.65rem;
+  font-weight: 700;
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Ajustes para telas menores (tablet/celular). */
+@media (max-width: 991.98px) {
+  /* Em mobile, a navegação deixa de ficar fixa. */
+  .site-nav {
+    position: static;
+  }
+
+  /* Cartão ocupa toda largura disponível sem quebrar layout. */
+  .card-preview {
+    width: 100%;
+    max-width: 520px;
+  }
+}
