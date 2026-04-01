@@ -10,19 +10,19 @@
 </head>
 <body>
   <!-- Mantém a mesma estrutura visual da página de apresentação para consistência. -->
-  <div class="site-wrapper">
-    <header class="site-header">
+  <div class="estrutura-site">
+    <header class="cabecalho-site">
       <div class="container py-4">
-        <h1 class="site-title">Disciplina de Interface Web</h1>
-        <p class="site-subtitle">Editor de cartões online - Trabalho 1</p>
+        <h1 class="titulo-site">Disciplina de Interface Web</h1>
+        <p class="subtitulo-site">Editor de cartões online - Trabalho 1</p>
       </div>
     </header>
 
-    <nav class="site-nav" aria-label="Menu principal">
+    <nav class="navegacao-site" aria-label="Menu principal">
       <div class="container">
-        <ul class="nav-list">
+        <ul class="lista-navegacao">
           <li><a href="index.html">Apresentação</a></li>
-          <li><a class="active" href="trabalho1.html">Trabalho 1</a></li>
+          <li><a class="ativo" href="trabalho1.html">Trabalho 1</a></li>
           <li><a href="trabalho2.html">Trabalho 2</a></li>
           <li><a href="trabalho3.html">Trabalho 3</a></li>
         </ul>
@@ -30,9 +30,9 @@
     </nav>
 
     <!-- Conteúdo principal: formulário de edição + cartão de pré-visualização. -->
-    <main class="site-main">
+    <main class="conteudo-site">
       <div class="container py-4 py-md-5">
-        <section class="info-card mb-4">
+        <section class="cartao-info mb-4">
           <h2>Editor de cartões</h2>
           <p>
             Preencha os campos do formulário para personalizar o cartão em tempo real.
@@ -46,11 +46,11 @@
             <form id="editor-form" class="editor-form info-card" novalidate>
               <!-- Campos de conteúdo textual do cartão. -->
               <fieldset>
-                <legend class="legend-title">Conteúdo principal</legend>
+                <legend class="titulo-legenda">Conteúdo principal</legend>
 
                 <div class="mb-3">
-                  <label for="occasion" class="form-label">Tipo de cartão</label>
-                  <select id="occasion" class="form-select" required>
+                  <label for="ocasiao" class="form-label">Tipo de cartão</label>
+                  <select id="ocasiao" class="form-select" required>
                     <option value="" selected>Selecione uma opção</option>
                     <option value="Aniversário">Aniversário</option>
                     <option value="Natal">Natal</option>
@@ -60,34 +60,40 @@
                 </div>
 
                 <div class="mb-3">
-                  <label for="titleText" class="form-label">Título (até 40 caracteres)</label>
-                  <input id="titleText" class="form-control" type="text" maxlength="40" required value="Feliz Dia Especial!">
+                  <label for="textoTitulo" class="form-label">Título (até 40 caracteres)</label>
+                  <input id="textoTitulo" class="form-control" type="text" maxlength="40" required value="Feliz Dia Especial!">
                 </div>
 
                 <div class="mb-3">
-                  <label for="messageText" class="form-label">Mensagem (até 180 caracteres)</label>
-                  <textarea id="messageText" class="form-control" rows="4" maxlength="180" required>Que seu dia seja cheio de alegria, carinho e momentos inesquecíveis.</textarea>
+                  <label for="textoMensagem" class="form-label">Mensagem (até 180 caracteres)</label>
+                  <textarea id="textoMensagem" class="form-control" rows="4" maxlength="180" required>Que seu dia seja cheio de alegria, carinho e momentos inesquecíveis.</textarea>
                 </div>
 
                 <div class="mb-3">
-                  <label for="signatureText" class="form-label">Assinatura (até 30 caracteres)</label>
-                  <input id="signatureText" class="form-control" type="text" maxlength="30" value="Com carinho, sua turma.">
+                  <label for="textoAssinatura" class="form-label">Assinatura (até 30 caracteres)</label>
+                  <input id="textoAssinatura" class="form-control" type="text" maxlength="30" value="Com carinho, sua turma.">
                 </div>
               </fieldset>
 
               <!-- Campos visuais básicos do cartão. -->
               <fieldset>
-                <legend class="legend-title">Visual do cartão</legend>
+                <legend class="titulo-legenda">Visual do cartão</legend>
 
                 <div class="row g-3">
                   <div class="col-12 col-md-6">
-                    <label for="bgColor" class="form-label">Cor de fundo</label>
-                    <input id="bgColor" class="form-control form-control-color" type="color" value="#fff7d6" aria-label="Selecionar cor de fundo">
+                    <label for="corFundo" class="form-label">Cor de fundo</label>
+                    <input id="corFundo" class="form-control form-control-color" type="color" value="#fff7d6" aria-label="Selecionar cor de fundo">
                   </div>
 
                   <div class="col-12 col-md-6">
-                    <label for="accentColor" class="form-label">Cor de destaque</label>
-                    <input id="accentColor" class="form-control form-control-color" type="color" value="#e56b6f" aria-label="Selecionar cor de destaque">
+                    <label for="corDestaque" class="form-label">Cor de destaque</label>
+                    <input id="corDestaque" class="form-control form-control-color" type="color" value="#e56b6f" aria-label="Selecionar cor de destaque">
+                  </div>
+
+                  <div class="col-12">
+                    <label for="imagemArquivo" class="form-label">Imagem do cartão</label>
+                    <input id="imagemArquivo" class="form-control" type="file" accept="image/*" aria-label="Selecionar imagem para o cartão">
+                    <small class="status-text">Formatos aceitos: JPG, PNG, GIF e WEBP.</small>
                   </div>
                 </div>
               </fieldset>
@@ -96,14 +102,15 @@
 
           <div class="col-12 col-xl-7">
             <!-- Painel de pré-visualização atualizado automaticamente via JavaScript. -->
-            <section class="info-card preview-wrap">
-              <h2 class="preview-title">Pré-visualização</h2>
-              <div class="preview-stage">
-                <article id="cardPreview" class="card-preview" aria-label="Pré-visualização do cartão">
-                  <p class="occasion" id="cardOccasion">Aniversário</p>
-                  <h3 id="cardTitle">Feliz Dia Especial!</h3>
-                  <p id="cardMessage" class="message">Que seu dia seja cheio de alegria, carinho e momentos inesquecíveis.</p>
-                  <p id="cardSignature" class="signature">Com carinho, sua turma.</p>
+            <section class="cartao-info painel-previa">
+              <h2 class="titulo-previa">Pré-visualização</h2>
+              <div class="area-previa">
+                <article id="previaCartao" class="cartao-previa" aria-label="Pré-visualização do cartão">
+                  <p class="tipo-ocasiao" id="ocasiaoCartao">Aniversário</p>
+                  <h3 id="tituloCartao">Feliz Dia Especial!</h3>
+                  <img id="imagemCartao" class="imagem-cartao" alt="Imagem escolhida para o cartão" hidden>
+                  <p id="mensagemCartao" class="texto-mensagem">Que seu dia seja cheio de alegria, carinho e momentos inesquecíveis.</p>
+                  <p id="assinaturaCartao" class="texto-assinatura">Com carinho, sua turma.</p>
                 </article>
               </div>
             </section>
@@ -112,7 +119,7 @@
       </div>
     </main>
 
-    <footer class="site-footer">
+    <footer class="rodape-site">
       <div class="container py-3">
         <p class="mb-0">Interface Web - 3º semestre | Trabalho 1: Editor de cartões online</p>
       </div>
